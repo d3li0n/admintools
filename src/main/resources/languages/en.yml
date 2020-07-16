@@ -1,0 +1,22 @@
+errors:
+ chat:
+  chat_disabled: "The chat is currently disabled."
+  chat_slowdown: "Slow chat mode is enabled. Wait %seconds% seconds more"
+ permissions:
+  user_has_no_permissions: "You do not have permissions to run the command."
+  console_has_no_permissions: "You must be a player to run this command!"
+messages:
+ commands:
+  cleanchat: "Chat was cleared by %player%"
+  mutechat:
+   enabled: "Chat was unmuted by %player%"
+   disabled: "Chat was muted by %player%"
+  slowchat:
+   enabled: "Chat slowdown was turned off by %player%"
+   disabled: "Chat slowdown was turned on by %player%"
+   invalid_time: "Slowdown mode must be between 1 and 50 seconds."
+   already_disabled: "Slowdown mode already disabled"
+   turned_off_to_player: "You turned off the slowchat mode"
+   enabled_to_player: "Set cooldown mode on. Each message should be sent in %seconds% seconds"
+   
+   

@@ -1,0 +1,3 @@
+# default config property to run the plugin
+config:
+ lang: 'en'

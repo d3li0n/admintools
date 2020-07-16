@@ -1,0 +1,20 @@
+errors:
+ chat:
+  chat_disabled: "Чат недоступен"
+  chat_slowdown: "Задержка чата включена. Подождите еще %seconds% секунд"
+ permissions:
+  user_has_no_permissions: "У вас нет прав, чтобы использовать данную команду"
+  console_has_no_permissions: "Вы должны быть игроком, чтобы воспользоваться данной коммандой"
+messages:
+ commands:
+  cleanchat: "Чат был очищен игроком %player%"
+  mutechat:
+   enabled: "Чат был разблокирован игроком %player%"
+   disabled: "Чат был забликирован игроком %player%"
+  slowchat:
+   enabled: "Задержка чата была выключена игроком %player%"
+   disabled: "Задержка чата была включена игроком %player%"
+   invalid_time: "Задержка чата должна быть от 1 до 50 секунд"
+   already_disabled: "Задержка чата уже включена"
+   turned_off_to_player: "Вы выключили задержку к чату"
+   enabled_to_player: "Задержка чата включена. Каждое сообщение должно отправлено раз в %seconds% секунд"

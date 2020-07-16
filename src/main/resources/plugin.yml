@@ -1,0 +1,15 @@
+main: me.d3li0n.AdminTools.Main
+name: AdminTools
+version: '0.0.1'
+author: d3li0n
+api-version: 1.16
+description: Pack of useful admin commands to control your server. Have fun!
+
+commands:
+ Clearchat:
+  description: Clears the server chat for all players online.
+ Slowchat:
+ Cc:
+  description: Clears the server chat for all players online.
+ Mutechat:
+  description: Mutes the chat for all players who donot have permissions to bypass the restrictions.
