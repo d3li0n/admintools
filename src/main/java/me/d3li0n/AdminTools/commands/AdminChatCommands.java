@@ -19,10 +19,8 @@ public class AdminChatCommands implements CommandExecutor {
 	}
 	
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(label.equalsIgnoreCase("clearchat") || label.equalsIgnoreCase("cc")) 
-		{
-			if(sender instanceof Player) 
-			{
+		if(label.equalsIgnoreCase("clearchat") || label.equalsIgnoreCase("cc")) {
+			if(sender instanceof Player) {
 				if(sender.hasPermission("admintools.clearchat")) 
 				{
 					for (Player p : Bukkit.getOnlinePlayers())

@@ -30,10 +30,8 @@ public class ChatListener implements Listener {
 		Player player = event.getPlayer();
 		UUID id = player.getUniqueId();
 		
-		if(!player.hasPermission("admintools.mutechat.bypass")) 
-		{
-			if(!Main.CHAT_STATE) 
-			{
+		if(!player.hasPermission("admintools.mutechat.bypass")) {
+			if(!Main.CHAT_STATE) {
 				event.setCancelled(true);
 				player.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.chat.chat_disabled"));
 			}
@@ -41,16 +39,12 @@ public class ChatListener implements Listener {
 		
 		if(!player.hasPermission("admintools.chat.cooldown.bypass")) 
 		{
-			if(!Main.CHAT_SLOW_STATE && Main.CHAT_STATE) 
-			{
-				if(manager.hasCooldown(id)) 
-				{
+			if(!Main.CHAT_SLOW_STATE && Main.CHAT_STATE) {
+				if(manager.hasCooldown(id)) {
 					event.setCancelled(true);
 					player.sendMessage(ChatColor.RED + (String) (util.getLangConfig().getString("errors.chat.chat_slowdown")).replace("%seconds%", "" + (manager.getTimeRemaining(id) / 1000)));
-				} 
-				else manager.add(new ChatCooldown(id, ChatManager.cooldownTimer, System.currentTimeMillis()));
-			}
-			else if(manager.hasCooldown(id)) manager.remove(id);
+				} else manager.add(new ChatCooldown(id, ChatManager.cooldownTimer, System.currentTimeMillis()));
+			} else if(manager.hasCooldown(id)) manager.remove(id);
 		}
 	}
 }
