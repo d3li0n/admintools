@@ -13,3 +13,4 @@ commands:
   description: Clears the server chat for all players online.
  Mutechat:
   description: Mutes the chat for all players who donot have permissions to bypass the restrictions.
+ Ap:

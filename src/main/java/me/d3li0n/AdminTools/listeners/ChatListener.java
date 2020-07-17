@@ -15,12 +15,12 @@ import me.d3li0n.AdminTools.helpers.ChatManager;
 import me.d3li0n.AdminTools.utils.FileManagerUtil;
 
 public class ChatListener implements Listener {
-	Main plugin;
+	// private Main plugin;
 	private FileManagerUtil util;
 	private ChatManager manager;
 	
 	public ChatListener(Main plugin, FileManagerUtil util, ChatManager manager) {
-		this.plugin = plugin;
+		// this.plugin = plugin;
 		this.util = util;
 		this.manager = manager;
 	}
@@ -47,4 +47,8 @@ public class ChatListener implements Listener {
 			} else if(manager.hasCooldown(id)) manager.remove(id);
 		}
 	}
+	
+	/* public Main getPlugin() {
+		return this.plugin;
+	} */
 }

@@ -1,3 +1,6 @@
 # default config property to run the plugin
 config:
  lang: 'en'
+ slot: 2 # sets the position of block to control the plugin in player inventory positions.
+ title: "Super Admin Tools" # name of the block
+ description: "Test" # description of block
