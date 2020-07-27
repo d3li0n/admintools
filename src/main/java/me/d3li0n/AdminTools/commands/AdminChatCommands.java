@@ -29,12 +29,12 @@ public class AdminChatCommands implements CommandExecutor {
 						}
 					return true;
 				} else {
-					sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.user_has_no_permissions"));
-	                return true;
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+					return true;
 				}
 			} else {
-				sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.console_has_no_permissions"));
-                return true;
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.console_has_no_permissions")));
+				return true;
 			}
 		} 
 		else if(label.equalsIgnoreCase("mutechat")) {
@@ -48,12 +48,12 @@ public class AdminChatCommands implements CommandExecutor {
 						}
 					return true;
 				} else {
-					sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.user_has_no_permissions"));
-	                return true;
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+					return true;
 				}
 			} else {
-				sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.console_has_no_permissions"));
-                return false;
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.console_has_no_permissions")));
+				return false;
 			}
 		}
 		else if(label.equalsIgnoreCase("slowchat")) {
@@ -75,12 +75,12 @@ public class AdminChatCommands implements CommandExecutor {
 					}
 					return true;
 				} else {
-					sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.user_has_no_permissions"));
-	                return true;
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+					return true;
 				}
 			} else {
-				sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("errors.permissions.console_has_no_permissions"));
-                return false;
+				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.permissions.console_has_no_permissions")));
+				return false;
 			}
 		}
 		return false;

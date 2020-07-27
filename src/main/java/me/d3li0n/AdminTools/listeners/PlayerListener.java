@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.d3li0n.AdminTools.utils.FileManagerUtil;
 import org.bukkit.BanList.Type;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,21 +25,23 @@ import me.d3li0n.AdminTools.utils.InventoryManagerUtil;
 
 public class PlayerListener implements Listener {
 
-	private Main plugin;
-	private InventoryManagerUtil util;
-	
-	public PlayerListener(Main main, InventoryManagerUtil util) {
+	private final Main plugin;
+	private final InventoryManagerUtil util;
+	private final FileManagerUtil file;
+
+	public PlayerListener(Main main, InventoryManagerUtil util, FileManagerUtil file) {
 		this.plugin = main;
 		this.util = util;
+		this.file = file;
 	}
-	
+
 	@EventHandler
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		ItemStack item = new ItemStack(Material.NETHER_STAR);
 		ItemMeta meta = item.getItemMeta();
 		
 		item.setType(Material.ENCHANTED_BOOK);
-		List<String> lore = new ArrayList<String>();
+		List<String> lore = new ArrayList<>();
 		
 		meta.setDisplayName("Server Stats");
 		lore.add("Online: " + Bukkit.getServer().getOnlinePlayers().size());
@@ -50,17 +53,15 @@ public class PlayerListener implements Listener {
 	@EventHandler
 	public void onPlayerLogin(PlayerLoginEvent event) {
 		if (event.getResult() == Result.KICK_BANNED) {
-			String expiration = "";
-			
-			if (Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getExpiration() == null)
-				expiration = "Forever";
-			else {
-				SimpleDateFormat form = new SimpleDateFormat("dd.MM.yyyy HH:mm");
-				expiration = form.format(Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getExpiration());
-			}
-            event.setKickMessage(ChatColor.RED + "You are " + ChatColor.DARK_RED + "banned" + ChatColor.RED + " from the Dev Server.\n\n" + 
-                      "Reason: " + ChatColor.GRAY + Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getReason() +
-                      ChatColor.RED + "\n Unban Time: " + ChatColor.GRAY + expiration + ".\n\nIf you think it was a mistake, fill out an appeal at " + ChatColor.GOLD + "\nhttps://example.com");
+			SimpleDateFormat form = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+			List<String> list = file.getLangConfig().getStringList("errors.ban.message_show");
+			String mes = "";
+			for (String message : list)
+				mes = mes + message + "\n";
+			event.setKickMessage(ChatColor.translateAlternateColorCodes('&', mes)
+					.replace("%reason%", Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getReason())
+					.replace("%time%", (Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getExpiration() == null) ? "Forever" :
+							form.format(Bukkit.getBanList(Type.NAME).getBanEntry(event.getPlayer().getName()).getExpiration())));
         }
 	}
 	

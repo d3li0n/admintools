@@ -26,13 +26,13 @@ public class AdminInterfaceCommands implements CommandExecutor {
 					player.openInventory(inventory.getInventory());
 					return true;
 				} else {
-					sender.sendMessage(ChatColor.RED + file.getLangConfig().getString("errors.permissions.user_has_no_permissions"));
-	                return false;
+					sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+					return false;
 				}
 			}
 		} else {
-			sender.sendMessage(ChatColor.RED + file.getLangConfig().getString("errors.permissions.console_has_no_permissions"));
-            return false;
+			sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.console_has_no_permissions")));
+			return false;
 		}
 		return false;
 	}

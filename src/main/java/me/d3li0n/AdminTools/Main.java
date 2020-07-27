@@ -19,10 +19,8 @@ public class Main extends JavaPlugin {
 	public static boolean CHAT_SLOW_STATE = true;
 	
 	private FileManagerUtil fileUtil;
-	private ChatManager manager;
 	private InventoryManagerUtil inventory;
-	private PluginDescriptionFile file;
-	
+
 	@Override
 	public void onEnable() {
 		fileUtil =  new FileManagerUtil(this);
@@ -39,16 +37,16 @@ public class Main extends JavaPlugin {
 			/*
 			 * Create Plugin's GUI Inventory
 			 */
-			this.file = this.getDescription();
-			inventory = new InventoryManagerUtil(this.file, this);
+			PluginDescriptionFile file = this.getDescription();
+			inventory = new InventoryManagerUtil(file, this);
 			
 			/*
 			 * Register Events
 			 */
-			manager = new ChatManager();
-			getServer().getPluginManager().registerEvents(new ChatListener(this, fileUtil, manager), this);
+			ChatManager manager = new ChatManager();
+			getServer().getPluginManager().registerEvents(new ChatListener(fileUtil, manager), this);
 			getServer().getPluginManager().registerEvents(new PlayerBlockInteractListener(this, inventory), this);
-			getServer().getPluginManager().registerEvents(new PlayerListener(this, inventory), this);
+			getServer().getPluginManager().registerEvents(new PlayerListener(this, inventory, fileUtil), this);
 			/*
 			 * Register Plugin's Commands
 			 */
@@ -68,6 +66,7 @@ public class Main extends JavaPlugin {
 		getCommand("slowchat").setExecutor(new AdminChatCommands(fileUtil));
 		getCommand("ap").setExecutor(new AdminInterfaceCommands(fileUtil, inventory));
 		getCommand("ban").setExecutor(new AdminPlayerCommands(fileUtil));
+		getCommand("unban").setExecutor(new AdminPlayerCommands(fileUtil));
 	}
 	
 	public String getPluginLang() {

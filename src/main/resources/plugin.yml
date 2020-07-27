@@ -1,6 +1,6 @@
 main: me.d3li0n.AdminTools.Main
 name: AdminTools
-version: '0.0.1'
+version: '0.0.2'
 author: d3li0n
 api-version: 1.16
 description: Pack of useful admin commands to control your server. Have fun!
@@ -30,3 +30,7 @@ commands:
   usage: /<command>
   description: Bans a player forever.
   permissions: admintools.ban
+ Unban:
+  usage: /<command>
+  description: Unbans a player.
+  permissions: admintools.unban

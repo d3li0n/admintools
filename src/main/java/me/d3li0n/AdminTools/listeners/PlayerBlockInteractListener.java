@@ -17,8 +17,8 @@ import me.d3li0n.AdminTools.Main;
 import me.d3li0n.AdminTools.utils.InventoryManagerUtil;
 
 public class PlayerBlockInteractListener implements Listener {
-	private Main plugin;
-	private InventoryManagerUtil inventory;
+	private final Main plugin;
+	private final InventoryManagerUtil inventory;
 	
 	public PlayerBlockInteractListener(Main plugin, InventoryManagerUtil inventory) {
 		this.plugin = plugin;
@@ -34,7 +34,6 @@ public class PlayerBlockInteractListener implements Listener {
 				if (event.getCurrentItem().getItemMeta().hasLore()) event.setCancelled(true);
 				break;
 			}
-			default: System.out.println(event.getAction());
 		}
 		
 		if (event.getInventory().equals(inventory.getInventory())) event.setCancelled(true);
@@ -48,8 +47,7 @@ public class PlayerBlockInteractListener implements Listener {
 				System.out.println(event.getSlot());
 				System.out.println(event.getInventory().getItem(34));
 				break;
-			} 
-			default: System.out.println(event.getAction());
+			}
 		}
 	}
 	@EventHandler
@@ -74,13 +72,11 @@ public class PlayerBlockInteractListener implements Listener {
 	
 	@EventHandler
 	public void onPlayerDeath(PlayerDeathEvent event) {
-		if (event.getEntity() instanceof Player) {
-			Player entity = event.getEntity();
-			Player player = entity.getPlayer();
-			if (player.hasPermission("admintools.gui")) {
-				event.setKeepInventory(true);
-				event.getDrops().clear();
-			}
+		Player entity = event.getEntity();
+		Player player = entity.getPlayer();
+		if (player.hasPermission("admintools.gui")) {
+			event.setKeepInventory(true);
+			event.getDrops().clear();
 		}
 	}
 	

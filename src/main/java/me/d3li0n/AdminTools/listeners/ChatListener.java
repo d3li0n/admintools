@@ -15,12 +15,10 @@ import me.d3li0n.AdminTools.helpers.ChatManager;
 import me.d3li0n.AdminTools.utils.FileManagerUtil;
 
 public class ChatListener implements Listener {
-	// private Main plugin;
-	private FileManagerUtil util;
-	private ChatManager manager;
+	private final FileManagerUtil util;
+	private final ChatManager manager;
 	
-	public ChatListener(Main plugin, FileManagerUtil util, ChatManager manager) {
-		// this.plugin = plugin;
+	public ChatListener(FileManagerUtil util, ChatManager manager) {
 		this.util = util;
 		this.manager = manager;
 	}
@@ -42,13 +40,9 @@ public class ChatListener implements Listener {
 			if(!Main.CHAT_SLOW_STATE && Main.CHAT_STATE) {
 				if(manager.hasCooldown(id)) {
 					event.setCancelled(true);
-					player.sendMessage(ChatColor.RED + (String) (util.getLangConfig().getString("errors.chat.chat_slowdown")).replace("%seconds%", "" + (manager.getTimeRemaining(id) / 1000)));
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', util.getLangConfig().getString("errors.chat.chat_slowdown")).replace("%seconds%", "" + (manager.getTimeRemaining(id) / 1000)));
 				} else manager.add(new ChatCooldown(id, ChatManager.cooldownTimer, System.currentTimeMillis()));
 			} else if(manager.hasCooldown(id)) manager.remove(id);
 		}
 	}
-	
-	/* public Main getPlugin() {
-		return this.plugin;
-	} */
 }
