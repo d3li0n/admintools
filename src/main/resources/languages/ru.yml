@@ -1,10 +1,27 @@
 errors:
+ general:
+  player_not_found: "Игрок не найден"
+  invalid_parameter: "Неизвестный параметр был передан в команду"
  chat:
   chat_disabled: "Чат недоступен"
   chat_slowdown: "Задержка чата включена. Подождите еще %seconds% секунд"
+ ban:
+  yourself: "Вы не можете заблокировать самого себя"
+  was_banned_alread: "Вы не можете заблокировать данный аккаунт. Данный аккаунт уже был заблокирован другим администратором"
+  message_show:
+   - "&cВы &4забанены &cна данном сервере"
+   - ""
+   - ""
+   - "Причина: %reason%"
+   - "&cДата разбана: &7%time%."
+   - ""
+   - ""
+   - "Если вы считаете это ошибкой, обжалуйте данное наказание на"
+   - "&6https://example.com/bans"
  permissions:
-  user_has_no_permissions: "У вас нет прав, чтобы использовать данную команду"
-  console_has_no_permissions: "Вы должны быть игроком, чтобы воспользоваться данной коммандой"
+  user_has_no_permissions: "&cУ вас нет прав, чтобы использовать данную команду"
+  console_has_no_permissions: "&cВы должны быть игроком, чтобы воспользоваться данной коммандой"
+  has_higher_permissions_than_you: "Вы не можете заблокировать данный аккаунт. Данный игрок имеет привелегию обхода бана. Используйте консоль"
 messages:
  commands:
   cleanchat: "Чат был очищен игроком %player%"
@@ -18,3 +35,17 @@ messages:
    already_disabled: "Задержка чата уже включена"
    turned_off_to_player: "Вы выключили задержку к чату"
    enabled_to_player: "Задержка чата включена. Каждое сообщение должно отправлено раз в %seconds% секунд"
+  ban:
+   use: "Используйте: /ban <player>"
+   default_ban_message: "&cВы были забанены администратором %player_banned%.\nНарушение: %reason%"
+   default_ban_reason: "Нарушение правил сервера."
+   ban_message_to_player_days: "&cВы были забанены администратором %player_banned%.\nПричина:&7 %default_ban_reason%&c\nСрок окончания: &7%forDays% дней."
+   ban_message_to_player_hours: "&cВы были забанены администратором %player_banned%.\nПричина:&7 %default_ban_reason%&c\nСрок окончания: &7%forHours% часов."
+   ban_message_to_player_minutes: "&cВы были забанены администратором %player_banned%.\nПричина:&7 %default_ban_reason%&c\nСрок окончания: &7%forMinutes% минут."
+   permanent_ban_message_to_players:
+     - ""
+     - "&6------------------------------------------------------"
+     - ""
+     - "&c%target_player% был забанен администратором %executed_player%"
+     - ""
+     - "&6------------------------------------------------------"

@@ -1,15 +1,36 @@
 main: me.d3li0n.AdminTools.Main
 name: AdminTools
-version: '0.0.1'
+version: '0.0.2'
 author: d3li0n
 api-version: 1.16
 description: Pack of useful admin commands to control your server. Have fun!
 
 commands:
  Clearchat:
+  usage: /<command>
   description: Clears the server chat for all players online.
+  permissions: admintools.clearchat
  Slowchat:
+  usage: /<command>
+  description: Slows the messages sended to chat.
+  permissions: admintools.slowchat
  Cc:
+  usage: /<command>
   description: Clears the server chat for all players online.
+  permissions: admintools.clearchat
  Mutechat:
+  usage: /<command>
   description: Mutes the chat for all players who donot have permissions to bypass the restrictions.
+  permissions: admintools.mutechat
+ Ap:
+  usage: /<command>
+  description: Opens the interface for managing the plugin and server.
+  permissions: admintools.gui
+ Ban:
+  usage: /<command>
+  description: Bans a player forever.
+  permissions: admintools.ban
+ Unban:
+  usage: /<command>
+  description: Unbans a player.
+  permissions: admintools.unban

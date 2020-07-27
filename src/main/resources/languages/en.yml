@@ -1,10 +1,27 @@
 errors:
+ general:
+  player_not_found: "Player was not found on the server"
+  invalid_parameter: "Invalid parameter to the command was passed"
  chat:
-  chat_disabled: "The chat is currently disabled."
+  chat_disabled: "The chat is currently disabled"
   chat_slowdown: "Slow chat mode is enabled. Wait %seconds% seconds more"
+ ban:
+  yourself: "You cannot ban yourself"
+  was_banned_alread: "You cannot ban this account. It was banned by another administrator"
+  message_show:
+   - "&cYou are &4banned &cfrom the server"
+   - ""
+   - ""
+   - "Reason: %reason%"
+   - "&cUnban time: &7%time%."
+   - ""
+   - ""
+   - "If you think it was a mistake, fill out an appeal at"
+   - "&6https://example.com/bans"
  permissions:
-  user_has_no_permissions: "You do not have permissions to run the command."
-  console_has_no_permissions: "You must be a player to run this command!"
+  user_has_no_permissions: "&cYou do not have permissions to run the command"
+  console_has_no_permissions: "&cYou must be a player to run this command!"
+  has_higher_permissions_than_you: "You cannot ban this account. This player either has permissions to bypass the ban or is opped. Use console to ban the player"
 messages:
  commands:
   cleanchat: "Chat was cleared by %player%"
@@ -14,9 +31,23 @@ messages:
   slowchat:
    enabled: "Chat slowdown was turned off by %player%"
    disabled: "Chat slowdown was turned on by %player%"
-   invalid_time: "Slowdown mode must be between 1 and 50 seconds."
+   invalid_time: "Slowdown mode must be between 1 and 50 seconds"
    already_disabled: "Slowdown mode already disabled"
    turned_off_to_player: "You turned off the slowchat mode"
    enabled_to_player: "Set cooldown mode on. Each message should be sent in %seconds% seconds"
+  ban:
+   use: "Use: /ban <player>"
+   default_ban_message: "&cYou were permanently banned by %player_banned%.\nReason: &7%reason%"
+   default_ban_reason: "Not following the rules."
+   ban_message_to_player_days: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forDays% days."
+   ban_message_to_player_hours: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forHours% hours."
+   ban_message_to_player_minutes: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forMinutes% minutes."
+   permanent_ban_message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% was banned by %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
    
    
