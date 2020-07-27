@@ -70,14 +70,12 @@ public class PlayerListener implements Listener {
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = (Player) event.getPlayer();
 
-		if (player.hasPermission("admintools.chat.login") && plugin.getConfig().getBoolean("config.on_player_join_message") && !player.isOp()) {
+		if (player.hasPermission("admintools.chat.login") && plugin.getConfig().getBoolean("config.on_player_join_message") && !player.isOp())
 			for (Player p : Bukkit.getOnlinePlayers())
-				if(p.isOnline() && player.hasPermission("admintools.chat.login")) {
+				if(p.isOnline() && player.hasPermission("admintools.chat.login"))
 					p.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.events.admin_join")
 																								.replace("%player%", player.getName())
 																								.replace("%ip%", player.getAddress().getHostString())));
-				}
-		}
 
 		if (player.hasPermission("admintools.gui.use") && player.hasPermission("admintools.gui")) {
 			PlayerInventory inventory = player.getInventory();

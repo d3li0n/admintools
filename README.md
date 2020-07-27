@@ -18,8 +18,8 @@ If you'd like to make a financial contribution to the project, you can follow th
 a donation, don't worry! There's lots of other ways to contribute:
  - Do you speak more than one language, and this language isn't supported by this plugin? Feel free to add this language
  by following origin language yml files, and make pull request.
- - Do you know Java? feel free to improve the plugin, and blame the developer for bad code.
+ - Do you know Java? Feel free to improve the plugin, and blame the developer for bad code.
  - Do you run a server? If you find any bugs or typo in the plugin, feel free to open an issue and notify the developer
  about it.
 
-***All contributors will be mentioned on this github page.***
+***All contributors will be mentioned on this GitHub page.***
