@@ -23,6 +23,8 @@ errors:
   console_has_no_permissions: "&cВы должны быть игроком, чтобы воспользоваться данной коммандой"
   has_higher_permissions_than_you: "Вы не можете заблокировать данный аккаунт. Данный игрок имеет привелегию обхода бана. Используйте консоль"
 messages:
+ events:
+  admin_join: "&l&5Администратор &4%player% &5вошел в игру. IP: &4%ip%"
  commands:
   cleanchat: "Чат был очищен игроком %player%"
   mutechat:

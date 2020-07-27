@@ -23,6 +23,8 @@ errors:
   console_has_no_permissions: "&cYou must be a player to run this command!"
   has_higher_permissions_than_you: "You cannot ban this account. This player either has permissions to bypass the ban or is opped. Use console to ban the player"
 messages:
+ events:
+  admin_join: "&l&5Admin &4%player% &5has joined the server. IP: &4%ip%"
  commands:
   cleanchat: "Chat was cleared by %player%"
   mutechat:

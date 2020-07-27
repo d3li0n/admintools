@@ -4,3 +4,4 @@ config:
  slot: 2 # sets the position of block in player's inventory to use the plugin
  title: "Super Admin Tools" # name of the block
  description: "Test" # description of block
+ on_player_join_message: true # when admin joins the server, all admins can see message in chat
