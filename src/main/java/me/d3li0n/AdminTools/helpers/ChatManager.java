@@ -5,38 +5,36 @@ import java.util.Map;
 import java.util.UUID;
 
 public class ChatManager {
-	public static int cooldownTimer;
-	private final Map<UUID, ChatCooldown> cooldowns;
+	public static int playerTimer;
+	private final Map<UUID, PlayerChatManager> players;
 	
 	public ChatManager() {
-		this.cooldowns = new HashMap<UUID, ChatCooldown>();
+		this.players = new HashMap<UUID, PlayerChatManager>();
 	}
 	
-	public void add(final ChatCooldown cooldown) {
-		final UUID player = cooldown.getPlayer();
-		if (this.cooldowns.containsKey(player)) this.cooldowns.remove(player);
-		this.cooldowns.put(player, cooldown);
+	public void add(final PlayerChatManager cooldown) {
+		final UUID p = cooldown.getPlayer();
+		if (this.players.containsKey(p)) this.players.remove(p);
+		this.players.put(p, cooldown);
 	}
 
 	public void remove(final UUID player) {
-		this.cooldowns.remove(player);
+		this.players.remove(player);
 	}
 
 	public boolean hasCooldown(final UUID player) {
-		final ChatCooldown cooldown = this.cooldowns.get(player);
-		if (cooldown == null) return false;
-		if (cooldown.isExpired()) {
-			this.cooldowns.remove(player);
+		final PlayerChatManager p = this.players.get(player);
+		if (p == null) return false;
+		if (p.isExpired()) {
+			this.players.remove(player);
 			return false;
 		}
 		return true;
 	}
 
 	public long getTimeRemaining(final UUID player) {
-		final ChatCooldown cooldown = this.cooldowns.get(player);
-		
-		if (cooldown != null) return cooldown.getTimeRemaining();
-		
+		final PlayerChatManager p = this.players.get(player);
+		if (p != null) return p.getTimeRemaining();
 		return -1;
 	}
 }

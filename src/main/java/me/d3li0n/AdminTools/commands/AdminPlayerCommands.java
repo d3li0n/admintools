@@ -94,9 +94,9 @@ public class AdminPlayerCommands implements CommandExecutor {
 					List<String> list = file.getLangConfig().getStringList("messages.commands.ban.permanent_ban_message_to_players");
 
 					for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-						list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message).replace("%target_player%", target.getName()).replace("%executed_player%", player.getName())));
+						if (player.hasPermission("admintools.chat"))
+							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message).replace("%target_player%", target.getName()).replace("%executed_player%", player.getName())));
 					}
-
 					Bukkit.getLogger().info(target.getName() + " was banned by " + sender.getName());
 
 				} else if (args.length == 2) {
@@ -230,11 +230,33 @@ public class AdminPlayerCommands implements CommandExecutor {
 			}
 		} else if (label.equalsIgnoreCase("unban")) {
 			if (sender.hasPermission("admintools.unban") || !(sender instanceof Player)) {
+				if (args.length >= 1) {
+					if (sender.getName().equals(args[0])) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.unban.not_yourself")));
+						return true;
+					}
+					if (!Bukkit.getBanList(BanList.Type.NAME).isBanned(args[0])) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.unban.is_not_banned")));
+						return true;
+					}
 
-			} else {
-				sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
-				return true;
-			}
+					Bukkit.getBanList(BanList.Type.NAME).pardon(args[0]);
+
+					List<String> list = file.getLangConfig().getStringList("messages.commands.unban.message_to_players");
+
+					for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+						if (args[1] != null && args[1].equalsIgnoreCase("-s") && player.hasPermission("admintools.chat")) {
+							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+						} else if (!args[1].equalsIgnoreCase("-s")) {
+							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+						}
+					}
+
+					Bukkit.getLogger().info(args[0] + " was unbanned by " + sender.getName());
+				} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.unban.use")));
+			} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+
+			return true;
 		}
 		return false;
 	}

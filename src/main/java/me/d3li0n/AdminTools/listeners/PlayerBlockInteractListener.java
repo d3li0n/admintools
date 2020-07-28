@@ -44,8 +44,6 @@ public class PlayerBlockInteractListener implements Listener {
 		switch(event.getAction()) {
 			case PLACE_ALL: {
 				if (event.getCurrentItem().equals(inventory.getBlock())) event.setCancelled(true);
-				System.out.println(event.getSlot());
-				System.out.println(event.getInventory().getItem(34));
 				break;
 			}
 		}

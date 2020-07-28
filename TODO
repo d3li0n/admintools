@@ -1,20 +1,25 @@
 TODO List for AdminTools plugin for v.1.0-release
 
 refactoring:
- - refactor ChatManager and ChatCooldown classes.
+ - [x] refactor ChatManager and ChatCooldown classes.
+
+general:
+ - [x] version checker
 
 commands:
  - [x] /ban
  - [x] /mutechat
  - /kick
  - /mute
+ - [x] /unban
  - [x] /slowchat
  - /report - report player for breaking the rules
  - /grant (?) for admins, gives specific permissions to player
+ - [x] /admins - all admins on server
 
 chat:
  - [x] disable chat with /mutechat and /slowchat commands
- - make admin chat
+ - [x] make admin chat
  - send to all admins online /reports
  - admin announcements
 

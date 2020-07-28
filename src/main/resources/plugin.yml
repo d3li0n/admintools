@@ -34,3 +34,7 @@ commands:
   usage: /<command>
   description: Unbans a player.
   permissions: admintools.unban
+ Admins:
+  usage: /<command>
+  description: Display all admins online.
+  permissions: admintools.admins

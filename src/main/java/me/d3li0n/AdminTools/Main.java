@@ -1,5 +1,7 @@
 package me.d3li0n.AdminTools;
 
+import me.d3li0n.AdminTools.commands.AdminGeneralCommands;
+import me.d3li0n.AdminTools.utils.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 
@@ -23,33 +25,30 @@ public class Main extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		fileUtil =  new FileManagerUtil(this);
-		
-		if(!fileUtil.validateConfigLang(getPluginLang())) {
+		fileUtil = new FileManagerUtil(this);
+
+		if (!fileUtil.validateConfigLang(getPluginLang())) {
 			Bukkit.getLogger().severe("Config language was not found. Plugin is disabled");
 			Bukkit.getPluginManager().disablePlugin(this);
 		} else {
-			/*
-			 * Open and Read Configuration Language File
-			 */
+
+			/* Checking the version of plugin */
+			if (!new UpdateChecker(this).isUpdated()) Bukkit.getLogger().severe("[AdminTools]: Current version seems to be out of date. Please update this plugin, as new versions may contain security fixes.");
+
+			/* Opening and Reading Configuration Language File */
 			fileUtil.readLangFile(getPluginLang());
 
-			/*
-			 * Create Plugin's GUI Inventory
-			 */
+			/* Creating Plugin's GUI Inventory */
 			PluginDescriptionFile file = this.getDescription();
 			inventory = new InventoryManagerUtil(file, this);
 			
-			/*
-			 * Register Events
-			 */
+			/* Registering Events */
 			ChatManager manager = new ChatManager();
 			getServer().getPluginManager().registerEvents(new ChatListener(fileUtil, manager), this);
 			getServer().getPluginManager().registerEvents(new PlayerBlockInteractListener(this, inventory), this);
 			getServer().getPluginManager().registerEvents(new PlayerListener(this, inventory, fileUtil), this);
-			/*
-			 * Register Plugin's Commands
-			 */
+
+			/* Registering Plugin's Commands */
 			registerCommands();
 		}
 	}
@@ -67,6 +66,7 @@ public class Main extends JavaPlugin {
 		getCommand("ap").setExecutor(new AdminInterfaceCommands(fileUtil, inventory));
 		getCommand("ban").setExecutor(new AdminPlayerCommands(fileUtil));
 		getCommand("unban").setExecutor(new AdminPlayerCommands(fileUtil));
+		getCommand("admins").setExecutor(new AdminGeneralCommands(fileUtil));
 	}
 	
 	public String getPluginLang() {

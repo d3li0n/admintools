@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class FileManagerUtil {
+public final class FileManagerUtil {
 	private final String[] language = {	"en", "ru" };
 	private File langFile;
 	private FileConfiguration langConfig;

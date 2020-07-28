@@ -5,6 +5,9 @@ errors:
  chat:
   chat_disabled: "The chat is currently disabled"
   chat_slowdown: "Slow chat mode is enabled. Wait %seconds% seconds more"
+ unban:
+  is_not_banned: "&cPlayer is not banned"
+  not_yourself: "&cYou cannot unban yourself"
  ban:
   yourself: "You cannot ban yourself"
   was_banned_alread: "You cannot ban this account. It was banned by another administrator"
@@ -23,9 +26,16 @@ errors:
   console_has_no_permissions: "&cYou must be a player to run this command!"
   has_higher_permissions_than_you: "You cannot ban this account. This player either has permissions to bypass the ban or is opped. Use console to ban the player"
 messages:
+ adminchat:
+  message: "&f[&9AdminChat&f]&c %sender%&9: &f%message%"
  events:
   admin_join: "&l&5Admin &4%player% &5has joined the server. IP: &4%ip%"
  commands:
+  admins:
+   message:
+    - "&cAdmins online:"
+    - " &6- &f%player%"
+    - "&dTotal number of admins online is &c%total%&d."
   cleanchat: "Chat was cleared by %player%"
   mutechat:
    enabled: "Chat was unmuted by %player%"
@@ -49,6 +59,15 @@ messages:
     - "&6------------------------------------------------------"
     - ""
     - "&c%target_player% was banned by %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  unban:
+   use: "Use: /unban <player>"
+   message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% was unbanned by %executed_player%"
     - ""
     - "&6------------------------------------------------------"
    

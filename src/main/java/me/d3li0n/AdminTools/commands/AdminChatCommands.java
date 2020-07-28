@@ -19,7 +19,7 @@ public class AdminChatCommands implements CommandExecutor {
 	}
 	
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(label.equalsIgnoreCase("clearchat") || label.equalsIgnoreCase("cc")) {
+		if (label.equalsIgnoreCase("clearchat") || label.equalsIgnoreCase("cc")) {
 			if(sender instanceof Player) {
 				if(sender.hasPermission("admintools.clearchat")) {
 					for (Player p : Bukkit.getOnlinePlayers())
@@ -37,7 +37,7 @@ public class AdminChatCommands implements CommandExecutor {
 				return true;
 			}
 		} 
-		else if(label.equalsIgnoreCase("mutechat")) {
+		else if (label.equalsIgnoreCase("mutechat")) {
 			if(sender instanceof Player) {
 				if(sender.hasPermission("admintools.mutechat")) {
 					Main.CHAT_STATE = !Main.CHAT_STATE;
@@ -63,7 +63,7 @@ public class AdminChatCommands implements CommandExecutor {
 						if(Integer.parseInt(args[0]) > 0 && Integer.parseInt(args[0]) <= 50) {
 							Main.CHAT_SLOW_STATE = !Main.CHAT_SLOW_STATE;
 							for (Player p : Bukkit.getOnlinePlayers()) if(p.isOnline()) p.sendMessage(ChatColor.RED + (String) (util.getLangConfig().getString("messages.commands.slowchat.disabled")).replace("%player%", sender.getName()));
-							ChatManager.cooldownTimer = Integer.parseInt(args[0]) * 1000;
+							ChatManager.playerTimer = Integer.parseInt(args[0]) * 1000;
 							sender.sendMessage(ChatColor.GREEN + util.getLangConfig().getString("messages.commands.slowchat.enabled_to_player").replace("%seconds%", "" + Integer.parseInt(args[0])));
 						} else sender.sendMessage(ChatColor.RED + util.getLangConfig().getString("messages.commands.slowchat.invalid_time"));
 					} catch (Exception e) {
