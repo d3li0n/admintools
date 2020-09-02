@@ -1,12 +1,50 @@
 errors:
+ general:
+  player_not_found: "&cPlayer was not found on the server"
+  invalid_parameter: "&cInvalid parameter to the command was passed"
  chat:
-  chat_disabled: "The chat is currently disabled."
-  chat_slowdown: "Slow chat mode is enabled. Wait %seconds% seconds more"
+  chat_disabled: "&cThe chat is currently disabled"
+  chat_slowdown: "&cSlow chat mode is enabled. Wait &f%seconds%&c seconds more"
+  player_has_been_muted: "&cYou were muted by administrator. Wait for: %time%"
+ mute:
+  yourself: "&cYou cannot mute yourself."
+  player_was_muted: "&cPlayer has been muted already."
+ unmute:
+  yourself: "&cYou cannot unmute yourself."
+  player_was_not_muted: "&cPlayer is not muted."
+ unban:
+  is_not_banned: "&cPlayer is not banned"
+  not_yourself: "&cYou cannot unban yourself"
+ kick:
+  yourself: "&cYou cannot kick yourself"
+ ban:
+  yourself: "&cYou cannot ban yourself"
+  was_banned_alread: "&cYou cannot ban this account. It was banned by another administrator"
+  message_show:
+   - "&cYou are &4banned &cfrom the server"
+   - ""
+   - ""
+   - "Reason: %reason%"
+   - "&cUnban time: &7%time%."
+   - ""
+   - ""
+   - "If you think it was a mistake, fill out an appeal at"
+   - "&6https://example.com/bans"
  permissions:
-  user_has_no_permissions: "You do not have permissions to run the command."
-  console_has_no_permissions: "You must be a player to run this command!"
+  user_has_no_permissions: "&cYou do not have permissions to run the command"
+  console_has_no_permissions: "&cYou must be a player to run this command!"
+  has_higher_permissions_than_you: "You cannot punish this account. This player either has permissions to bypass the punishment. Use console for this command"
 messages:
+ adminchat:
+  message: "&f[&9AdminChat&f]&c %sender%&9: &f%message%"
+ events:
+  admin_join: "&l&5Admin &4%player% &5has joined the server. IP: &4%ip%"
  commands:
+  admins:
+   message:
+    - "&cAdmins online:"
+    - " &6- &f%player%"
+    - "&dTotal number of admins online is &c%total%&d."
   cleanchat: "Chat was cleared by %player%"
   mutechat:
    enabled: "Chat was unmuted by %player%"
@@ -14,9 +52,67 @@ messages:
   slowchat:
    enabled: "Chat slowdown was turned off by %player%"
    disabled: "Chat slowdown was turned on by %player%"
-   invalid_time: "Slowdown mode must be between 1 and 50 seconds."
+   invalid_time: "Slowdown mode must be between 1 and 50 seconds"
    already_disabled: "Slowdown mode already disabled"
    turned_off_to_player: "You turned off the slowchat mode"
    enabled_to_player: "Set cooldown mode on. Each message should be sent in %seconds% seconds"
-   
+  kick:
+   use: "&cUse: /kick <player>"
+   default_kick_message: "You were kicked from the server by %player_kicked%"
+   kick_message_to_player: "&cYou were kicked by %player_kicked%.\nReason:&7 %reason%"
+   message_to_players:
+     - ""
+     - "&6------------------------------------------------------"
+     - ""
+     - "&c%target_player% was kicked by %executed_player%"
+     - ""
+     - "&6------------------------------------------------------"
+  ban:
+   use: "&cUse: /ban <player>"
+   default_ban_message: "&cYou were permanently banned by %player_banned%.\nReason: &7%reason%"
+   default_ban_reason: "Not following the rules."
+   ban_message_to_player_days: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forDays% days."
+   ban_message_to_player_hours: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forHours% hours."
+   ban_message_to_player_minutes: "&cYou were banned by %player_banned%.\nReason:&7 %default_ban_reason%&c\nFor: &7%forMinutes% minutes."
+   permanent_ban_message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% was banned by %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  unban:
+   use: "&cUse: /unban <player>"
+   message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% was unbanned by %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  mute:
+   use: "&cUse: /mute <player> <time> <reason>"
+   to_player: "&cYou were muted by &f%executed_player%&c for &f%time%&c. Reason: &f%reason%&c."
+   to_executor: "&cYou muted &f%target_player%&c for &f%time%&c. Reason: &f%reason%&c."
+   time_remaining_days: "%days% days %hours% hours %minutes% minutes %seconds% seconds"
+   time_remaining_hours: "%hours% hours %minutes% minutes %seconds% seconds"
+   time_remaining_minutes: "%minutes% minutes %seconds% seconds"
+   message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% was muted by %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  unmute:
+   use: "&cUse: /unmute <player>"
+   to_player: "&cYou were unmuted by &f%executed_player%&c."
+   to_executor: "&cYou unmuted &f%target_player%&c."
+   message_to_players:
+     - ""
+     - "&6------------------------------------------------------"
+     - ""
+     - "&c%target_player% was unmuted by %executed_player%"
+     - ""
+     - "&6------------------------------------------------------"
    

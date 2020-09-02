@@ -10,9 +10,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class FileManagerUtil {
+public final class FileManagerUtil {
 	private final String[] language = {	"en", "ru" };
-	private File langFile;
 	private FileConfiguration langConfig;
 	
 	JavaPlugin plugin;
@@ -29,15 +28,13 @@ public class FileManagerUtil {
     }
 	
 	public void readLangFile(String file) {
-		this.langFile = new File(plugin.getDataFolder(), "/languages/" + file + ".yml");
+		File langFile = new File(plugin.getDataFolder(), "/languages/" + file + ".yml");
 		this.langConfig = new YamlConfiguration();
 		try {
-            this.langConfig.load(this.langFile);
-        } catch (InvalidConfigurationException e) {
+            this.langConfig.load(langFile);
+        } catch (InvalidConfigurationException | IOException e) {
 			e.printStackTrace();
-		} catch (IOException e) {
-            e.printStackTrace();
-        } 
+		}
 	}
 	
 	public void createDefaultConfigFile(String resource) {
@@ -51,8 +48,7 @@ public class FileManagerUtil {
 	
 	public boolean validateConfigLang(String lang) {
 		File file = new File(plugin.getDataFolder() + "/languages/" + lang + ".yml");
-		if(!file.exists()) return false;
-		return true;
+		return file.exists();
 	}
 	
 	public void createDefaultLanguageDirectory() {
