@@ -1,6 +1,6 @@
 main: me.d3li0n.AdminTools.Main
 name: AdminTools
-version: '0.0.2'
+version: '0.0.3'
 author: d3li0n
 api-version: 1.16
 description: Pack of useful admin commands to control your server. Have fun!
@@ -38,3 +38,19 @@ commands:
   usage: /<command>
   description: Display all admins online.
   permissions: admintools.admins
+ Kick:
+  usage: /<command>
+  description: Kicks a player from server.
+  permissions: admintools.kick
+ Report:
+  usage: /<command>
+  description: Report a player for breaking the rules.
+  permissions: admintools.report.use
+ Mute:
+  usage: /<command>
+  description: Mutes a player for certain period of time.
+  permissions: admintools.mute
+ Unmute:
+  usage: /<command>
+  description: Unmutes player.
+  permissions: admintools.unmute

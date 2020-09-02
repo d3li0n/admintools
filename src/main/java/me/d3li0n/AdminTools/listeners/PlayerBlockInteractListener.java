@@ -14,13 +14,13 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 
 import me.d3li0n.AdminTools.Main;
-import me.d3li0n.AdminTools.utils.InventoryManagerUtil;
+import me.d3li0n.AdminTools.utils.PluginInventoryManagerUtil;
 
 public class PlayerBlockInteractListener implements Listener {
 	private final Main plugin;
-	private final InventoryManagerUtil inventory;
+	private final PluginInventoryManagerUtil inventory;
 	
-	public PlayerBlockInteractListener(Main plugin, InventoryManagerUtil inventory) {
+	public PlayerBlockInteractListener(Main plugin, PluginInventoryManagerUtil inventory) {
 		this.plugin = plugin;
 		this.inventory = inventory;
 	}
@@ -36,7 +36,7 @@ public class PlayerBlockInteractListener implements Listener {
 			}
 		}
 		
-		if (event.getInventory().equals(inventory.getInventory())) event.setCancelled(true);
+		if (event.getInventory().equals(inventory.getInventory()) || event.getInventory().equals(inventory.getReportInventory())) event.setCancelled(true);
 	}
 	
 	@EventHandler
@@ -44,6 +44,7 @@ public class PlayerBlockInteractListener implements Listener {
 		switch(event.getAction()) {
 			case PLACE_ALL: {
 				if (event.getCurrentItem().equals(inventory.getBlock())) event.setCancelled(true);
+				// if (event.getClickedInventory().equals(inventory.getReportInventory())) event.setCancelled(true);
 				break;
 			}
 		}

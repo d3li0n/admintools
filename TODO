@@ -9,11 +9,12 @@ general:
 commands:
  - [x] /ban
  - [x] /mutechat
- - /kick
- - /mute
+ - [x] /kick
+ - [x] /mute
+ - [x] /unmute
  - [x] /unban
  - [x] /slowchat
- - /report - report player for breaking the rules
+ - [+-] /report - report player for breaking the rules
  - /grant (?) for admins, gives specific permissions to player
  - [x] /admins - all admins on server
 

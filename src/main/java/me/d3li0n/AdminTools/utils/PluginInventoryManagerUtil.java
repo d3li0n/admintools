@@ -16,13 +16,13 @@ import org.bukkit.plugin.PluginDescriptionFile;
 
 import me.d3li0n.AdminTools.Main;
 
-public class InventoryManagerUtil {
+public class PluginInventoryManagerUtil {
 	private Inventory inventory;
 	private final int INVENTORY_SIZE = 54;
 	private PluginDescriptionFile plugin;
 	private final Main main;
 	
-	public InventoryManagerUtil(PluginDescriptionFile plugin, Main main) {
+	public PluginInventoryManagerUtil(PluginDescriptionFile plugin, Main main) {
 		this.plugin = plugin;
 		this.main = main;
 		createInventory();
@@ -31,7 +31,9 @@ public class InventoryManagerUtil {
 	public Inventory getInventory() {
 		return this.inventory;
 	}
-	
+
+	public Inventory getReportInventory() { return this.main.reportUtil.getReportInventory(); }
+
 	public void createInventory() {
 		inventory = Bukkit.createInventory(null, INVENTORY_SIZE, "AdminTools " + getVersion());
 		

@@ -3,7 +3,6 @@ package me.d3li0n.AdminTools.listeners;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import me.d3li0n.AdminTools.utils.FileManagerUtil;
 import org.bukkit.BanList.Type;
@@ -22,15 +21,15 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import me.d3li0n.AdminTools.Main;
-import me.d3li0n.AdminTools.utils.InventoryManagerUtil;
+import me.d3li0n.AdminTools.utils.PluginInventoryManagerUtil;
 
 public class PlayerListener implements Listener {
 
 	private final Main plugin;
-	private final InventoryManagerUtil util;
+	private final PluginInventoryManagerUtil util;
 	private final FileManagerUtil file;
 
-	public PlayerListener(Main main, InventoryManagerUtil util, FileManagerUtil file) {
+	public PlayerListener(Main main, PluginInventoryManagerUtil util, FileManagerUtil file) {
 		this.plugin = main;
 		this.util = util;
 		this.file = file;

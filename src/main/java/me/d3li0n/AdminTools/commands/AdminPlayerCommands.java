@@ -216,7 +216,7 @@ public class AdminPlayerCommands implements CommandExecutor {
 					for (Player player : Bukkit.getServer().getOnlinePlayers()) {
 						if (args[3].equalsIgnoreCase("-s") && player.hasPermission("admintools.chat")) {
 							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message).replace("%target_player%", target.getName()).replace("%executed_player%", player.getName())));
-						} else if (!args[3].equalsIgnoreCase("-s") ) {
+						} else if (!args[3].equalsIgnoreCase("-s")) {
 							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message).replace("%target_player%", target.getName()).replace("%executed_player%", player.getName())));
 						}
 					}
@@ -255,7 +255,53 @@ public class AdminPlayerCommands implements CommandExecutor {
 					Bukkit.getLogger().info(args[0] + " was unbanned by " + sender.getName());
 				} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.unban.use")));
 			} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
+			return true;
+		} else if (label.equalsIgnoreCase("kick")) {
+			if (sender.hasPermission("admintools.kick") || !(sender instanceof Player)) {
+				if (args.length >= 1) {
+					if (sender.getName().equals(args[0])) {
+						sender.sendMessage(ChatColor.translateAlternateColorCodes('&', ChatColor.RED + file.getLangConfig().getString("errors.kick.yourself")));
+						return true;
+					}
 
+					Player target = Bukkit.getServer().getPlayer(args[0]);
+
+					if(target == null || !target.isOnline()) {
+						sender.sendMessage(ChatColor.RED + file.getLangConfig().getString("errors.general.player_not_found"));
+						return true;
+					}
+
+					if (sender instanceof Player && (target.hasPermission("admintools.kick.bypass") || target.isOp())) {
+						sender.sendMessage(ChatColor.RED + file.getLangConfig().getString("errors.permissions.has_higher_permissions_than_you"));
+						return true;
+					}
+
+					if (args.length == 1) target.kickPlayer(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.kick.default_kick_message").replace("%player_kicked%", sender.getName())));
+					else if (args.length == 2)
+						if (args[1].equalsIgnoreCase("-s")) target.kickPlayer(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.kick.default_kick_message").replace("%player_kicked%", sender.getName())));
+						else target.kickPlayer(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.kick.kick_message_to_player").replace("%player_kicked%", sender.getName()).replace("%reason%", args[1])));
+					else target.kickPlayer(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.kick.kick_message_to_player").replace("%player_kicked%", sender.getName()).replace("%reason%", args[1])));
+
+					List<String> list = file.getLangConfig().getStringList("messages.commands.kick.message_to_players");
+					for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+						if (args.length == 1) {
+							list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+						} else if (args.length == 2) {
+							if (args[1].equalsIgnoreCase("-s") && player.hasPermission("admintools.chat"))
+								list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+							else if (!args[1].equalsIgnoreCase("-s"))
+								list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+						} else if (args.length == 3) {
+							if (args[2].equalsIgnoreCase("-s") && player.hasPermission("admintools.chat"))
+								list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+							else if (!args[2].equalsIgnoreCase("-s"))
+								list.forEach((message) -> player.sendMessage(ChatColor.translateAlternateColorCodes('&', message.replace("%target_player%", args[0]).replace("%executed_player%", sender.getName()))));
+						}
+					}
+
+					Bukkit.getLogger().info(target.getName() + " was kicked by " + sender.getName());
+				} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("messages.commands.kick.use")));
+			} else sender.sendMessage(ChatColor.translateAlternateColorCodes('&', file.getLangConfig().getString("errors.permissions.user_has_no_permissions")));
 			return true;
 		}
 		return false;

@@ -7,13 +7,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.d3li0n.AdminTools.utils.FileManagerUtil;
-import me.d3li0n.AdminTools.utils.InventoryManagerUtil;
+import me.d3li0n.AdminTools.utils.PluginInventoryManagerUtil;
 
 public class AdminInterfaceCommands implements CommandExecutor {
 	private FileManagerUtil file;
-	private InventoryManagerUtil inventory;
+	private PluginInventoryManagerUtil inventory;
 	
-	public AdminInterfaceCommands(FileManagerUtil file, InventoryManagerUtil inventory) {
+	public AdminInterfaceCommands(FileManagerUtil file, PluginInventoryManagerUtil inventory) {
 		this.file = file;
 		this.inventory = inventory;
 	}

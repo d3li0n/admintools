@@ -1,16 +1,25 @@
 errors:
  general:
-  player_not_found: "Игрок не найден"
-  invalid_parameter: "Неизвестный параметр был передан в команду"
+  player_not_found: "&cИгрок не найден"
+  invalid_parameter: "&cНеизвестный параметр был передан в команду"
  chat:
-  chat_disabled: "Чат недоступен"
-  chat_slowdown: "Задержка чата включена. Подождите еще %seconds% секунд"
+  chat_disabled: "&cЧат недоступен"
+  chat_slowdown: "&cЗадержка чата включена. Подождите еще &f%seconds%&c секунд"
+  player_has_been_muted: "&cВаш чат был заблокирован администратором. Окончание наказания через: %time%"
+ mute:
+  yourself: "&cВы не можете заблокировать чат самому себе."
+  player_was_muted: "&c Игроку уже оключен доступ к чату."
+ unmute:
+  yourself: "&cВы не можете снять мут с самого себя."
+  player_was_not_muted: "&cУ игрока не отключен доступ к чату."
  unban:
   is_not_banned: "&cИгрок не забанен"
   not_yourself: "&cВы не можете забанить себя"
+ kick:
+  yourself: "You cannot kick yourself"
  ban:
-  yourself: "Вы не можете заблокировать самого себя"
-  was_banned_alread: "Вы не можете заблокировать данный аккаунт. Данный аккаунт уже был заблокирован другим администратором"
+  yourself: "&cВы не можете заблокировать самого себя"
+  was_banned_alread: "&cВы не можете заблокировать данный аккаунт. Данный аккаунт уже был заблокирован другим администратором"
   message_show:
    - "&cВы &4забанены &cна данном сервере"
    - ""
@@ -24,7 +33,7 @@ errors:
  permissions:
   user_has_no_permissions: "&cУ вас нет прав, чтобы использовать данную команду"
   console_has_no_permissions: "&cВы должны быть игроком, чтобы воспользоваться данной коммандой"
-  has_higher_permissions_than_you: "Вы не можете заблокировать данный аккаунт. Данный игрок имеет привелегию обхода бана. Используйте консоль"
+  has_higher_permissions_than_you: "Вы не можете выдать наказание данному аккаунту. Данный игрок имеет привелегию обхода наказания. Используйте консоль"
 messages:
  adminchat:
   message: "&f[&9AdminChat&f]&c %sender%&9: &f%message%"
@@ -47,8 +56,19 @@ messages:
    already_disabled: "Задержка чата уже включена"
    turned_off_to_player: "Вы выключили задержку к чату"
    enabled_to_player: "Задержка чата включена. Каждое сообщение должно отправлено раз в %seconds% секунд"
+  kick:
+   use: "&cИспользуйте: /kick <player>"
+   default_kick_message: "Вы были кикнуты с сервера администратором %player_kicked%"
+   kick_message_to_player: "&cВы были кикнуты с сервера администратором %player_kicked%.\nПричина:&7 %reason%"
+   message_to_players:
+     - ""
+     - "&6------------------------------------------------------"
+     - ""
+     - "&c%target_player% был кикнут администратором %executed_player%"
+     - ""
+     - "&6------------------------------------------------------"
   ban:
-   use: "Используйте: /ban <player>"
+   use: "&cИспользуйте: /ban <player>"
    default_ban_message: "&cВы были забанены администратором %player_banned%.\nНарушение: %reason%"
    default_ban_reason: "Нарушение правил сервера."
    ban_message_to_player_days: "&cВы были забанены администратором %player_banned%.\nПричина:&7 %default_ban_reason%&c\nСрок окончания: &7%forDays% дней."
@@ -62,11 +82,36 @@ messages:
      - ""
      - "&6------------------------------------------------------"
   unban:
-   use: "Используйте: /unban <player>"
+   use: "&cИспользуйте: /unban <player>"
    message_to_players:
     - ""
     - "&6------------------------------------------------------"
     - ""
     - "&c%target_player% был разбанен администратором %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  mute:
+   use: "&cИспользуйте: /mute <player> <time> <reason>"
+   to_player: "&cВаш чат был заблокирован игроком &f%executed_player%&c на &f%time%&c. Причина: &f%reason%&c."
+   to_executor: "&cВы заблокировали доступ к чату игроку &f%target_player%&c на &f%time%&c. Причина: &f%reason%&c."
+   time_remaining_days: "%days% дней %hours% часов %minutes% минут %seconds% секунд"
+   time_remaining_hours: "%hours% часов %minutes% минут %seconds% секунд"
+   time_remaining_minutes: "%minutes% минут %seconds% секунд"
+   message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% был заблокирован доступ к чату администратором %executed_player%"
+    - ""
+    - "&6------------------------------------------------------"
+  unmute:
+   use: "&cИспользуйте: /unmute <player>"
+   to_player: "&cВаш доступ к чату был разблокирован администратором &f%executed_player%&c."
+   to_executor: "&cВы сняли мут с игрока &f%target_player%&c."
+   message_to_players:
+    - ""
+    - "&6------------------------------------------------------"
+    - ""
+    - "&c%target_player% было снято ограничение к чату администратором %executed_player%"
     - ""
     - "&6------------------------------------------------------"

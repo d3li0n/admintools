@@ -1,6 +1,6 @@
 # default config property to run the plugin
 config:
- lang: 'en'
+ lang: 'en' # sets the language of file. check available languages in languages folder, or make your own language file with the same structure
  slot: 2 # sets the position of block in player's inventory to use the plugin
  title: "Super Admin Tools" # name of the block
  description: "Test" # description of block

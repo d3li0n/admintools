@@ -36,8 +36,7 @@ public class UpdateChecker {
         String[] latest = this.latest.split("\\.");
         String[] current = this.current.split("\\.");
         int counter = 0;
-        for (int i = 0; i < latest.length; i++)
-            if (latest[i].equals(current[i])) counter++;
+        for (int i = 0; i < latest.length; i++) if (latest[i].equals(current[i])) counter++;
         if (counter == current.length) return true;
         return false;
     }
